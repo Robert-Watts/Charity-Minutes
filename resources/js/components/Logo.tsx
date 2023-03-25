@@ -41,4 +41,4 @@ const SvgComponent: React.FC<React.SVGAttributes<SVGElement>>  = (props) => (
     </svg>
 )
 
-export default SvgComponent
+export default SvgComponent;

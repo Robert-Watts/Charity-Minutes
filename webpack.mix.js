@@ -12,7 +12,7 @@ require('mix-tailwindcss');
  |
  */
 
-mix.typeScript('resources/js/app.js', 'public/js').react();
+mix.typeScript('resources/js/app.jsx', 'public/js').react();
 mix.postCss('resources/css/app.css', 'public/css', [
         //
     ]).tailwind();
