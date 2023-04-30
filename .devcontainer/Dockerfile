@@ -9,8 +9,10 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 # Install node and npm
-RUN apt update
-RUN apt install -y nodejs npm
+# RUN sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+# RUN apt-get update
+# RUN apt-get install -y nodejs npm
+RUN sudo curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - && sudo apt-get install -y nodejs
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

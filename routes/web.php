@@ -15,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/{path?}', function () {
-    return view('app', ['laravel_version' => app()->version()]);
+   return response(view('app', ['laravel_version' => app()->version()]));
+            // ->header('Access-Control-Allow-Origin', "Content-Security-Policy: default-src 'none';script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.preview.app.github.dev/");      
 });

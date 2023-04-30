@@ -13,7 +13,7 @@
 	"forwardPorts": [
 		8080,
         8081,
-		3306
+		5173
 	],
 	"features": {
 		"ghcr.io/devcontainers/features/sshd:1": {
@@ -24,7 +24,19 @@
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "sudo chmod a+x \"$(pwd)\" && sudo rm -rf /var/www/html && sudo ln -s \"$(pwd)/public\" /var/www/html",
 
-	"postStartCommand": "composer install && npm install && php artisan migrate && apache2ctl start"
+	"postStartCommand": "composer install && npm install && php artisan migrate && apache2ctl start",
+	"portsAttributes": {
+		"80": {
+			"label": "Apache",
+		},
+		"5173": {
+			"label": "Hot Module Replacement",
+			"protocol": "http"
+		},
+		"8080": {
+			"label": "Apache"
+		}
+	}
 
 
 	// Configure tool-specific properties.
