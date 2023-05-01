@@ -27,4 +27,12 @@ class Member extends Model
     {
         return $this->belongsTo(Charity::class);
     }
+
+    /**
+     * Trusteeships.
+     */
+    public function trustees()
+    {
+        $this->hasMany(Trusteeship::class);
+    }
 }

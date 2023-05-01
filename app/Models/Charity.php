@@ -26,4 +26,12 @@ class Charity extends Model
     {
         return $this->hasMany(Member::class);
     }
+
+    /**
+     * Get the members for the charity.
+     */
+    public function trustees()
+    {
+        return $this->hasMany(Trusteeship::class);
+    }
 }
