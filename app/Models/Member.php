@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Charity;
 
-class Charity extends Model
+class Member extends Model
 {
     use HasFactory;
 
@@ -16,14 +17,14 @@ class Charity extends Model
      */
     protected $fillable = [
         'name',
-        'objectives',
+        'charity_id'
     ];
 
     /**
-     * Get the members for the charity.
+     * Get the charity that owns the member.
      */
-    public function members()
+    public function charity()
     {
-        return $this->hasMany(Member::class);
+        return $this->belongsTo(Charity::class);
     }
 }

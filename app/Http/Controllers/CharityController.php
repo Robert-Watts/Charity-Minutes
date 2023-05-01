@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CharityResource;
 use App\Models\Charity;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class CharityController extends Controller
 {
@@ -15,8 +14,7 @@ class CharityController extends Controller
      */
     public function index()
     {
-        $charities = Charity::all();
-        return $charities->toJson();
+        return CharityResource::collection(Charity::with('members')->get());
     }
 
     /**
@@ -25,7 +23,6 @@ class CharityController extends Controller
     */
     public function show($id)
     {
-        $x = Charity::findOrFail($id);
-        return $x->toJson();
+        return new CharityResource(Charity::with('members')->findOrFail($id));
     }
 }

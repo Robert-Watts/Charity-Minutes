@@ -32,10 +32,10 @@ class CharityTest extends TestCase
     {
         $this->seed();
 
-        $response = $this->get('/api/charities');
-        $response->assertJsonPath('0.id', 1);
-        $response->assertJsonPath('0.name', "Test Charity");
-        $response->assertJsonPath('0.objectives', "To facilitate good testing of charity software.");
+        $response = $this->get('/api/charity');
+        $response->assertJsonPath('data.0.id', 1);
+        $response->assertJsonPath('data.0.name', "Test Charity");
+        $response->assertJsonPath('data.0.objectives', "To facilitate good testing of charity software.");
         $response->assertStatus(200);
     }
 
@@ -48,9 +48,9 @@ class CharityTest extends TestCase
     {
         $this->seed();
 
-        $response = $this->get('/api/charities/1');
-        $response->assertJsonPath('name', "Test Charity");
-        $response->assertJsonPath('objectives', "To facilitate good testing of charity software.");
+        $response = $this->get('/api/charity/1');
+        $response->assertJsonPath('data.name', "Test Charity");
+        $response->assertJsonPath('data.objectives', "To facilitate good testing of charity software.");
         $response->assertStatus(200);
     }
 }
