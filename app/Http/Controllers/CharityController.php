@@ -23,6 +23,6 @@ class CharityController extends Controller
     */
     public function show($id)
     {
-        return new CharityResource(Charity::with('members')->with('trustees')->with('trustees.member')->findOrFail($id));
+        return new CharityResource(Charity::with('members')->with('trustees')->with('trustees.member')->with('meetings')->findOrFail($id));
     }
 }

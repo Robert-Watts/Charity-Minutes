@@ -19,8 +19,14 @@ return new class extends Migration
         Schema::create('trusteeships', function (Blueprint $table) {
             $table->id();
             $table->string("role");
-            $table->foreignIdFor(Charity::class);
-            $table->foreignIdFor(Member::class);
+            $table->foreignIdFor(Charity::class)
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignIdFor(Member::class)
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

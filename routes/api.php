@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CharityController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\MemberController;
 
 use Illuminate\Http\Request;
@@ -18,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 */
 Route::apiResource('charity', CharityController::class);
 Route::apiResource('member', MemberController::class);
+Route::apiResource('meeting', MeetingController::class);
