@@ -2,6 +2,7 @@ import * as React from "react";
 import {createBrowserRouter} from "react-router-dom";
 import Charities from "../pages/Charities";
 import Charity from "../pages/Charity";
+import MinutesList from "../pages/MinutesList";
 
 
 /**
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Charities />,
+    },
+    {
+        path: "/:charity_id",
+        element: <MinutesList />,
     },
     {
         path: "/:charity_id/about",
