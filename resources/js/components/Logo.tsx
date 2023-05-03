@@ -3,7 +3,7 @@ import * as React from "react"
 /*
  * React component containing the logo.
  */
-const SvgComponent: React.FC<React.SVGAttributes<SVGElement>>  = (props) => (
+const Logo: React.FC<React.SVGAttributes<SVGElement>>  = (props) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" {...props}>
         <path
             fill="#CCD6DD"
@@ -41,4 +41,4 @@ const SvgComponent: React.FC<React.SVGAttributes<SVGElement>>  = (props) => (
     </svg>
 )
 
-export default SvgComponent;
+export default Logo;

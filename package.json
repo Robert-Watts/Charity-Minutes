@@ -12,21 +12,21 @@
     "devDependencies": {
         "@babel/preset-react": "^7.18.6",
         "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
-        "@tailwindcss/forms": "^0.5.3",
         "@types/react": "^18.0.28",
         "@types/react-helmet": "^6.1.6",
+        "@types/react-bootstrap": "^0.32.32",
         "axios": "^0.25",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "mix-tailwindcss": "^1.3.0",
         "postcss": "^8.1.14",
         "react-refresh": "^0.14.0",
-        "tailwindcss": "^3.2.7",
         "ts-loader": "^9.4.2",
         "typescript": "^5.0.2"
     },
     "dependencies": {
+        "bootstrap": "^5.2.3",
         "react": "^18.2.0",
+        "react-bootstrap": "^2.7.4",
         "react-dom": "^18.2.0",
         "react-helmet": "^6.1.0",
         "react-router-dom": "^6.9.0"

@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-require('mix-tailwindcss');
 
 /*
  |--------------------------------------------------------------------------
@@ -15,6 +14,6 @@ require('mix-tailwindcss');
 mix.typeScript('resources/js/app.jsx', 'public/js').react();
 mix.postCss('resources/css/app.css', 'public/css', [
         //
-    ]).tailwind();
+    ]);
 ;
 mix.version();
