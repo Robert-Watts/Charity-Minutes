@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\CharityController;
+use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\MemberController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('charity', CharityController::class);
+Route::apiResource('member', MemberController::class);
+Route::apiResource('meeting', MeetingController::class);
