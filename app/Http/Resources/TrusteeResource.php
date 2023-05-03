@@ -15,6 +15,7 @@ class TrusteeResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'trustee_id'=>$this->id,
             'member_id' => $this->member->id,
             'member_name'=>$this->member->name,
             'role' => $this->role,
