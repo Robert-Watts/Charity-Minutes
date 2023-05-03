@@ -1,5 +1,7 @@
 import * as React from "react";
 import {createBrowserRouter} from "react-router-dom";
+import Charities from "../pages/Charities";
+import Charity from "../pages/Charity";
 
 
 /**
@@ -7,9 +9,13 @@ import {createBrowserRouter} from "react-router-dom";
  * @returns <Routes />
  */
 const router = createBrowserRouter([
-    // {
-    //     path: "/",
-    //     element: <h1>hi</h1>,
-    // },
+    {
+        path: "/",
+        element: <Charities />,
+    },
+    {
+        path: "/:charity_id/about",
+        element: <Charity />,
+    },
 ]);
 export default router;
