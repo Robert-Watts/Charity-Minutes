@@ -5,14 +5,17 @@
  */
 
 import './bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import React from 'react';
 import ReactDOM from "react-dom/client";
+import {RouterProvider} from "react-router-dom";
+import router from "./utilities/Routes";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <h1>Hi</h1>
+        <RouterProvider router={router} />
     </React.StrictMode>
 );
 
