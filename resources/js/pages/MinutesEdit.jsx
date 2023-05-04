@@ -16,6 +16,7 @@ const MinutesEdit = () => {
     const { charity_id, meeting_id } = useParams()
     const [minutes, setMinutes] = useState(null);
     const [attendance, setAttendance] = useState(null);
+    const [date, setDate] = useState(null);
     const [trustees, setTrustees] = useState(null);
     const [isSaving, setIsSaving] = useState(false);
     const autoSaveTimer = useRef();
@@ -51,13 +52,14 @@ const MinutesEdit = () => {
             setMinutes(JSON.parse(response.data.data.minutes));
             setAttendance(JSON.parse(response.data.data.attendance));
             setTrustees(response.data.data.charity.trustees);
+            setDate(response.data.data.date_of_meeting)
         });
       }, []);
 
     const heading = (
         <Row className="align-items-end">
             <Col md="8">
-                <h1>Edit Meeting</h1>
+                <h1>Edit Meeting {date && `- ${date}`}</h1>
             </Col>
             <Col md="4" className="text-end text-muted">
                 {isSaving && minutes && attendance &&
