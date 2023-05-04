@@ -4,6 +4,7 @@ import Charities from "../pages/Charities";
 import Charity from "../pages/Charity";
 import MinutesList from "../pages/MinutesList";
 import MinutesEdit from "../pages/MinutesEdit";
+import Members from "../pages/Members";
 
 
 /**
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     {
         path: "/:charity_id/:meeting_id/edit",
         element: <MinutesEdit />,
+    },
+    {
+        path: "/:charity_id/members",
+        element: <Members />,
     },
     {
         path: "/:charity_id/about",
