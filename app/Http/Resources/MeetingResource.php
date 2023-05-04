@@ -19,7 +19,7 @@ class MeetingResource extends JsonResource
             'date_of_meeting' => $this->date_of_meeting,
             'attendance' => $this->attendance,
             'minutes' => $this->minutes,
-            'charity' => TrusteeResource::collection($this->whenLoaded("charity")),
+            'charity' => CharityResource::make($this->whenLoaded("charity")),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

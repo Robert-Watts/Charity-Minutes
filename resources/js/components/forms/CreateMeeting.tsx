@@ -24,7 +24,7 @@ const CreateMeeting: React.FC<Props> = ({ close, is_open }: Props) => {
         .post("/meeting", {
           "date_of_meeting": date, 
           "attendance": "[]", 
-          "minutes": "[]",
+          "minutes": '[{type: "text", value: ""}]',
           "charity_id": charity_id
         })
         .then((response) => {

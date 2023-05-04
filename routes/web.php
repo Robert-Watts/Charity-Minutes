@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('{path?}', function () {
-    return view('app', ['laravel_version' => app()->version()]);
-});
+Route::get('/{path?}', [
+    'uses' => function () {
+            return view('app', ['laravel_version' => app()->version()]);
+    },
+    'as' => 'react',
+    'where' => ['path' => '^(?!api).*']
+]);
