@@ -67,7 +67,7 @@ const MinutesList = () => {
                                             <td>{meeting.id}</td>
                                             <td>{meeting.date_of_meeting}</td>
                                             <td>{attendees.join(", ")}</td>
-                                            <td><Link to={`/${charity.id}/${meeting.id}/`}>Open</Link></td>
+                                            <td><Link to={`/${charity.id}/${meeting.id}/edit`}>Open</Link></td>
                                         </tr>
                                     )
                                 })}

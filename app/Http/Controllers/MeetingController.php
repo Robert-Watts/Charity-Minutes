@@ -32,7 +32,7 @@ class MeetingController extends Controller
      */
     public function show($meeting_id)
     {
-        return new MeetingResource(Meeting::findOrFailOrFail($meeting_id));
+        return new MeetingResource(Meeting::with("charity")->with("charity.trustees")->findOrFail($meeting_id));
     }
 
     /**
