@@ -9,10 +9,10 @@ import styled from "styled-components";
 type Props = {
     minutes: any,
     setMinutes: (array) => void
+    errors: any
 }
 
-const Editor: React.FC<Props> = ({ minutes, setMinutes }: Props) => {
-
+const Editor: React.FC<Props> = ({ minutes, setMinutes, errors }: Props) => {
     const handleFormChange = (item, index) => {
         let data = [...minutes];
         data[index] = item;
@@ -30,7 +30,7 @@ const Editor: React.FC<Props> = ({ minutes, setMinutes }: Props) => {
         data.splice(index, 1);
         setMinutes(data);
     }
-
+    
     return (
         <Form className="mb-3">
             <Seperator insertItem={item => insertItem(item, 0)} />
@@ -38,7 +38,7 @@ const Editor: React.FC<Props> = ({ minutes, setMinutes }: Props) => {
                 let element = <p>This item is not of a known type</p>;
                 
                 if (item['type'] == "vote"){
-                    element = <Vote item={item} onChange={item => handleFormChange(item, index)} />;
+                    element = <Vote item={item} onChange={item => handleFormChange(item, index)} errors={`${index + 1 }` in errors ? errors[`${index + 1 }`] : []} />;
                 } 
                 else if (item['type'] == "text") {
                     element = <Text item={item} onChange={item => handleFormChange(item, index)}/>;
@@ -48,6 +48,7 @@ const Editor: React.FC<Props> = ({ minutes, setMinutes }: Props) => {
                     <div key={index}>
                         <ItemContainer>
                             <StyledDeleteItem deleteItem={() => deleteItem(index)} />
+                            
                             {element}
                         </ItemContainer>
                         <Seperator insertItem={item => insertItem(item, index + 1)} />

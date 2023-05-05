@@ -5,6 +5,7 @@ import Charity from "../pages/Charity";
 import MinutesList from "../pages/MinutesList";
 import MinutesEdit from "../pages/MinutesEdit";
 import Members from "../pages/Members";
+import MinutesView from "../pages/MinutesView";
 
 
 /**
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
     {
         path: "/:charity_id",
         element: <MinutesList />,
+    },
+    {
+        path: "/:charity_id/:meeting_id",
+        element: < MinutesView />,
     },
     {
         path: "/:charity_id/:meeting_id/edit",

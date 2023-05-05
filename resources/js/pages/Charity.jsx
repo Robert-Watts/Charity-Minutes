@@ -14,9 +14,26 @@ const Charity = () => {
             setCharity(response.data.data);
         });
       }, []);
+      
+      const page_title = (
+        <>
+        <Row className="align-items-end">
+            <Col md="8">
+                <h1>Charity</h1>
+            </Col>
+            {charity &&
+            <Col md="4">
+                <Button variant="primary" onClick={(e) => e.preventDefault()} className="mb-1 float-end">
+                    Create Charity
+                </Button>
+            </Col>
+            }
+        </Row>
+        </>
+      )
 
     return (
-        <Page title={"Charity"}>
+        <Page title={"Charity"} page_title={page_title}>
                 {!charity ? <Loading /> :
                     <section>
 

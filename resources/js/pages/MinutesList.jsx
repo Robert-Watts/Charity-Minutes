@@ -7,13 +7,11 @@ import Loading from "../components/Loading";
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
 import { Col, Row } from "react-bootstrap";
-import Form from 'react-bootstrap/Form';
-import { useNavigate } from "react-router-dom";
 import CreateMeeting from "../components/forms/CreateMeeting";
 
 const MinutesList = () => {
+    
     const [showCreateMeeting, setShowCreateMeeting] = useState(false);
     const handleCreateMeetingClose = () => setShowCreateMeeting(false);
     const handleCreateMeetingShow = () => setShowCreateMeeting(true);
@@ -28,20 +26,28 @@ const MinutesList = () => {
         });
       }, []);
 
-
+      const page_title = (
+        <>
+        <Row className="align-items-end">
+            <Col md="8">
+                <h1>Minutes</h1>
+            </Col>
+            {charity &&
+            <Col md="4">
+                <Button variant="primary" onClick={handleCreateMeetingShow} className="mb-1 float-end">
+                    Create Meeting
+                </Button>
+            </Col>
+            }
+        </Row>
+        </>
+      )
 
     return (
         <>
-            <Page title={"Minutes"}>
+            <Page title={"Minutes"} heading={page_title}>
                 {!charity ? <Loading /> :
                 <>
-                    <Row>
-                        <Col>
-                            <Button variant="primary" onClick={handleCreateMeetingShow} className="mb-1 float-end">
-                                Create Meeting
-                            </Button>
-                        </Col>
-                    </Row>
                     <Row>
                         <Col>
                             <Table striped bordered hover>
@@ -67,7 +73,7 @@ const MinutesList = () => {
                                             <td>{meeting.id}</td>
                                             <td>{meeting.date_of_meeting}</td>
                                             <td>{attendees.join(", ")}</td>
-                                            <td><Link to={`/${charity.id}/${meeting.id}/edit`}>Open</Link></td>
+                                            <td><Link to={`/${charity.id}/${meeting.id}`}>Open</Link></td>
                                         </tr>
                                     )
                                 })}

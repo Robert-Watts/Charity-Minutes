@@ -19,6 +19,8 @@ const MinutesEdit = () => {
     const [date, setDate] = useState(null);
     const [trustees, setTrustees] = useState(null);
     const [isSaving, setIsSaving] = useState(false);
+    const [errors, setErrors] = useState({});
+
     const autoSaveTimer = useRef();
     const putRequestRef = useRef();
 
@@ -41,7 +43,33 @@ const MinutesEdit = () => {
             setIsSaving(true);
             clearTimeout(autoSaveTimer.current);
             axios.put(`meeting/${meeting_id}/`, putRequestRef.current)
+            .catch((error) => {
+                if(error.response.status == 422){
+
+                    var all_errors = {}
+
+                    for (const [key, errors] of Object.entries(error.response.data.errors)) {
+                        errors.forEach(((error_text) =>{
+                            let parts = error_text.match(/Item ([0-9]+) - (.+)$/);
+                            let key = parts[1];
+                            let value = parts[2];
+                            if (key in all_errors){
+                                all_errors[key].push(value)
+                            } else {
+                                all_errors[key] = [value]
+                            }
+
+                        }));
+                    }
+                    
+                    setErrors(all_errors)
+                    
+                }
+            })
             .then((response) => {
+                if (response != undefined && response.status == 200) {
+                    setErrors({});
+                } 
               setIsSaving(false)
             });
         }, SAVE_AFTER_MS)
@@ -74,12 +102,13 @@ const MinutesEdit = () => {
             </Col>
         </Row>
     )
+
     return (
         <>
             <Page title={"Edit Meeting"} heading={heading}>
                 {!minutes && !attendance ? <Loading /> :
                 <>
-                    <Accordion defaultActiveKey="0">
+                    <Accordion defaultActiveKey={['0', '1']} alwaysOpen={true} className="mb-3">
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Attendance</Accordion.Header>
                             <Accordion.Body>
@@ -89,7 +118,7 @@ const MinutesEdit = () => {
                         <Accordion.Item eventKey="1">
                             <Accordion.Header>Minutes</Accordion.Header>
                             <Accordion.Body>
-                                <Editor minutes={minutes} setMinutes={setMinutes} />
+                                <Editor minutes={minutes} setMinutes={setMinutes} errors={errors} />
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>

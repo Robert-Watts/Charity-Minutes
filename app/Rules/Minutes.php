@@ -60,23 +60,23 @@ class Minutes implements DataAwareRule, InvokableRule
         if(!(array_key_exists("resolution", $object) and 
         array_key_exists("votes_for", $object) and
         array_key_exists("votes_against", $object)) or
-        count($object) != 5){
-           $fail("Item " . $key . " does not contain the correct items.");
+        count($object) != 4){
+           $fail("Item " . $key . " Does not contain the correct items.");
         }
 
         if (array_key_exists("resolution", $object) and !is_string($object['resolution'])){
-            $fail("Item " . $key . " - resolution is not a string.");
+            $fail("Item " . $key . " - Resolution is not a string.");
         }
         
         $missing_vote_tally = false;
 
         if (!array_key_exists("votes_for", $object) or !is_int($object['votes_for']) or $object['votes_for'] < 0){
-            $fail("Item " . $key . " - votes_for is not a integer above 0.");
+            $fail("Item " . $key . " - Votes For is not a integer above 0.");
             $missing_vote_tally = true;
         }
 
         if (!array_key_exists("votes_against", $object) or !is_int($object['votes_against']) or $object['votes_against'] < 0){
-            $fail("Item " . $key . " - votes_against is not a integer above 0.");
+            $fail("Item " . $key . " - Votes Against is not a integer above 0.");
             $missing_vote_tally = true;
         }
 
@@ -87,8 +87,28 @@ class Minutes implements DataAwareRule, InvokableRule
         $total_votes = $object['votes_against'] + $object['votes_for'];
 
         if ($total_votes > $charity->trustees->count()){
-            $fail("Item " . $key . " - there are more votes than trustees!");
-        }              
+            $fail("Item " . $key . " - There are more votes than trustees!");
+        }
+
+        $two_thirds_trustees = round(($charity->trustees->count() / 3) * 2, 0);
+        $quorum = $two_thirds_trustees > 2 ? $two_thirds_trustees : 2;
+
+        $trustees_present = json_decode($this->data['attendance'], true);
+        if (json_last_error() !== JSON_ERROR_NONE){
+            $fail("The number of trustees present could not be varified.");
+            return;
+        }
+
+        if(count($trustees_present) < $total_votes){
+            $fail("Item " . $key . " - More votes have been counted than there are trustees present!");
+        }
+
+        if($quorum > count($trustees_present)){
+            $fail("Item " . $key . " - A Quorum of " . $quorum . " has not been met, this vote cannot take place!");
+        }
+
+
+
     }
 
     /**
