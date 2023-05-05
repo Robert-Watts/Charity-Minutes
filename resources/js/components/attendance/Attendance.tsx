@@ -27,9 +27,7 @@ const Attendance: React.FC<Props> = ({ attendance, trustees, setAttendace }: Pro
         if (event.target.checked) {
             data.push(trustee_id)
         }
-
-        console.log(attendance, data)
-
+        
         setAttendace(data);
     }
 

@@ -24,10 +24,11 @@ const CreateMeeting: React.FC<Props> = ({ close, is_open }: Props) => {
         .post("/meeting", {
           "date_of_meeting": date, 
           "attendance": "[]", 
-          "minutes": '[{type: "text", value: ""}]',
+          "minutes": '[{"type": "text", "value": ""}]',
           "charity_id": charity_id
         })
         .then((response) => {
+            console.log(response);
             navigate(`/${charity_id}/${response.data.data.id}/edit`)
         });
     }
@@ -58,7 +59,7 @@ const CreateMeeting: React.FC<Props> = ({ close, is_open }: Props) => {
                 Close
             </Button>
             <Button variant="primary" onClick={createMeeting}>
-                {createMeetingLoading && <Spinner />}
+                {createMeetingLoading && <Spinner size="sm" />}
                 Save Changes
             </Button>
         </Modal.Footer>

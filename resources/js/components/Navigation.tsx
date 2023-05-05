@@ -19,7 +19,7 @@ const Navigation: React.FC<Props> = ({ hide_buttons }: Props) => {
     return (
         <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand to={`/`} as={Link}>
             <Logo height={"27px"}/>
           </Navbar.Brand>
           {!hide_buttons && charity_id != null && 
