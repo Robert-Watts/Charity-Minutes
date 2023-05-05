@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Trusteeship extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * The database columns that are assignable.
      *
      * @var array<int, string>
      */
@@ -18,11 +17,17 @@ class Trusteeship extends Model
         'member_id',
     ];
 
+    /**
+     * Get the member that holds the trusteeship.
+     */
     public function member()
     {
         return $this->belongsTo(Member::class);
     }
 
+    /**
+     * Get the charty that the trusteeship is apart of.
+     */
     public function charity()
     {
         return $this->belongsTo(Charity::class);
