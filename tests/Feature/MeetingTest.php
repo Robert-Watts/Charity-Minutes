@@ -465,7 +465,7 @@ class MeetingTest extends TestCase
 
         $response->assertStatus(302);
         $response->assertInvalid([
-            'attendance' => "Could not find the trustee id 2 in the database."
+            'attendance' => "The trustee id 2 is not a trustee of the given charity."
         ]);
     }
 }
