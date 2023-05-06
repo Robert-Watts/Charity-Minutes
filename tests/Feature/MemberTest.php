@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Member;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class MemberTest extends TestCase
@@ -12,12 +11,14 @@ class MemberTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Test the charity api get single charity method.
+     * Test the charity api get single member method.
      *
      * @return void
      */
     public function test_charity_api_get_route()
     {
+        $this->seed();
+
         $member = new Member();
         $member->name = "Test Member";
         $member->charity_id = 1;
