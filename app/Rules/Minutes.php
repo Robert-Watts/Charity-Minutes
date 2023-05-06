@@ -116,7 +116,7 @@ class Minutes implements DataAwareRule, InvokableRule
         # Get the trustees that are marked as present
         $trustees_present = json_decode($this->data['attendance'], true);
         if (json_last_error() !== JSON_ERROR_NONE){
-            $fail("The number of trustees present could not be varified.");
+            $fail("Item " . $key . " - The number of trustees present could not be varified.");
             return;
         }
 
