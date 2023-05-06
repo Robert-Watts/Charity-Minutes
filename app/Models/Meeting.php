@@ -11,7 +11,7 @@ class Meeting extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The database columns that are assignable.
      *
      * @var array<int, string>
      */

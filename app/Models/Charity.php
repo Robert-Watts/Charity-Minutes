@@ -10,7 +10,7 @@ class Charity extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The database columns that are assignable.
      *
      * @var array<int, string>
      */
@@ -28,7 +28,7 @@ class Charity extends Model
     }
 
     /**
-     * Get the members for the charity.
+     * Get the trustees for the charity.
      */
     public function trustees()
     {

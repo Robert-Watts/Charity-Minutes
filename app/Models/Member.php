@@ -11,7 +11,7 @@ class Member extends Model
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The database columns that are assignable.
      *
      * @var array<int, string>
      */
@@ -21,7 +21,7 @@ class Member extends Model
     ];
 
     /**
-     * Get the charity that owns the member.
+     * Get the charity that the member is apart of.
      */
     public function charity()
     {
@@ -29,7 +29,7 @@ class Member extends Model
     }
 
     /**
-     * Trusteeships.
+     * Get the Trusteeships that the member holds.
      */
     public function trustees()
     {
