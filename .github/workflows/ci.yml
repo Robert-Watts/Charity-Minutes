@@ -20,7 +20,7 @@ jobs:
         php artisan key:generate
 
     - name: Run Testsuite
-      run: php artisan test --coverage  --log-junit results.xml --testdox-html results.html 
+      run: php artisan test --coverage --coverage-text=coverage.txt --log-junit results.xml --testdox-html results.html 
 
     - name: Archive code Results
       if: always()
