@@ -21,6 +21,9 @@ jobs:
 
     - name: Run Testsuite
       run: php artisan test --coverage --coverage-text=coverage.txt --log-junit results.xml --testdox-html results.html 
+    
+    - name: Show files
+      run: ls
 
     - name: Archive code Results
       if: always()
