@@ -15,6 +15,22 @@ jobs:
         php artisan key:generate
 
     - name: Run Testsuite
-      run: php artisan test
+      run: php artisan test --coverage-text=coverage.txt  --log-junit results.xml --testdox-html results.html 
+
+    - name: Archive code Results
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: |
+          results.xml
+          results.html 
+
+    - name: Archive code coverage results
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: coverage.txt
+
+
     # - uses: php-actions/phpunit@v3
     # ... then your own project steps ...
