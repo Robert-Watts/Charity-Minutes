@@ -4,6 +4,8 @@ import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
+import { Row, Col } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 
 const Charities = () => {
     const [charities, setCharities] = React.useState(null);
@@ -20,19 +22,19 @@ const Charities = () => {
             <Col md="8">
                 <h1>Charity</h1>
             </Col>
-            {charity &&
+    
             <Col md="4">
                 <Button variant="primary" onClick={(e) => e.preventDefault()} className="mb-1 float-end">
                     Create Charity
                 </Button>
             </Col>
-            }
+            
         </Row>
         </>
       )
       
     return (
-        <Page title={"Charities"} hide_nav={false}>
+        <Page title={"Charities"} hide_nav={false} heading={page_title}>
             { !charities ? <Loading /> :
                 <Table striped bordered hover>
                 <thead>
