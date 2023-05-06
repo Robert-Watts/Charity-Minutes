@@ -3,12 +3,18 @@ name: CI
 on: [push]
 
 jobs:
-  build-test:
+  unit-test:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
     - uses: php-actions/composer@v6 # or alternative dependency management
-    - run: php artisan test
+    - name: Prepare Laravel Application
+      run: |
+        cp .env.ci .env
+        php artisan key:generate
+
+    - name: Run Testsuite
+      run: php artisan test
     # - uses: php-actions/phpunit@v3
     # ... then your own project steps ...
