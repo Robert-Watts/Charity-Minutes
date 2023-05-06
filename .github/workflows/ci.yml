@@ -21,7 +21,7 @@ jobs:
         mkdir report
 
     - name: Run Testsuite
-      run: php artisan test --coverage --coverage-text=report --coverage-text=coverage.txt --log-junit results.xml --testdox-html results.html 
+      run: php artisan test --coverage --coverage-html=report --coverage-text=coverage.txt --log-junit results.xml --testdox-html results.html 
   
     - name: Archive code Results
       if: always()
