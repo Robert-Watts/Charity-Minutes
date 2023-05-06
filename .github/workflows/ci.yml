@@ -39,7 +39,7 @@ jobs:
         name: code-coverage-report
         path: |
           coverage.txt
-          report/*
+          report
 
 
     # - uses: php-actions/phpunit@v3
