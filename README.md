@@ -3,7 +3,7 @@
 A project that allows for charity minutes to be taken according to UK charity law. 
 It allows attendance, resolution votes (calculating quorum automatically) and text minutes to be create in a meeting, modified afterwards and exported.
 
-![Image of the edit minutes page](report\assets\apendix\frontend-screenshots\Minutes Edit - Overview.png "Image of the edit minutes page")
+![Image of the edit minutes page](report/assets/apendix/frontend-screenshots/Minutes%20Edit%20-%20Overview.png)
 
 The project is written in PHP (using the [Laravel](https://laravel.com/) framework), [React](https://react.dev/) and [Typescript](https://www.typescriptlang.org/). 
 The project was done as part of a [University of York](https://www.york.ac.uk/) BEng Computer Science degree, and as such there is a project report that goes along side this repo. The abstract of the report can be found below, along with copies of the LaTeX.
@@ -12,7 +12,7 @@ The project was done as part of a [University of York](https://www.york.ac.uk/) 
 
 The app is split in to two, a React front end written in Typescript and a PHP backend (and object model) which uses Laravel. This structure can be seen in the image below.
 
-![Archtectural Design of the project](report\assets\methodology-assets\Methodology - Flow Diagram v2.drawio.png "Archtectural Design of the project")
+![Archtectural Design of the project](report/assets/methodology-assets/Methodology%20-%20Flow%20Diagram%20v2.drawio.png "Archtectural Design of the project")
 
 ## Development & Tests
 
