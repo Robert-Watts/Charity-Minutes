@@ -3,7 +3,7 @@ name: "Build LaTeX Report"
 on: [push]
 
 jobs:
-  build:
+  build-latex:
     steps:
     - "Build Latex Report"
       uses: xu-cheng/latex-action@v3
