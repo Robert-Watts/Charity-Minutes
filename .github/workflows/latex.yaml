@@ -1,0 +1,11 @@
+name: "Build LaTeX Report"
+
+on: [push]
+
+jobs:
+  build:
+    steps:
+      - "Build Latex Report"
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "report/Project Report.tex"
