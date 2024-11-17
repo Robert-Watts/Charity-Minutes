@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - uses: php-actions/composer@v6 # or alternative dependency management
     - name: Setup PHP with Xdebug
       uses: shivammathur/setup-php@v2
@@ -18,14 +18,14 @@ jobs:
       run: |
         cp .env.ci .env
         php artisan key:generate
-        mkdir report
+        mkdir coverage-report
 
     - name: Run Testsuite
-      run: php artisan test --coverage --coverage-html=report --coverage-text=coverage.txt --log-junit results.xml --testdox-html results.html 
+      run: php artisan test --coverage --coverage-html=coverage-report --coverage-text=coverage.txt --log-junit results.xml --testdox-html results.html 
   
     - name: Archive code Results
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: results
         path: |
@@ -34,12 +34,12 @@ jobs:
 
     - name: Archive code coverage results
       if: always()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: code-coverage-report
         path: |
           coverage.txt
-          report
+          coverage-report
 
 
     # - uses: php-actions/phpunit@v3
