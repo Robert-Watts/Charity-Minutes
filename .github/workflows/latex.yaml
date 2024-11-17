@@ -9,4 +9,4 @@ jobs:
     - name: "Build Latex Report"
       uses: xu-cheng/latex-action@v3
       with:
-        root_file: "report/Project%20Report.tex"
+        root_file: "report/Project-Report.tex"

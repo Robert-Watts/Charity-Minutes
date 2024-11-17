@@ -24,7 +24,7 @@ There are unit tests that are run as part of the project. These are run as part 
 
 ##  Project Report
 
-The full dissertation report can be found in LaTeX format in [report/Project Report.tex](report/Project%20Report.tex).
+The full dissertation report can be found in LaTeX format in [report/Project Report.tex](report/Project-Report.tex).
 
 ### Abstract
 
